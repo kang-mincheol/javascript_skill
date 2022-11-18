@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        디바운스 || 디바운싱 기능 연습
+        데일리펀딩 아파트 검색시 관련아파트 불러올때 사용하면 좋을것 같음
+    -->
+    <input type="text" id="text_input" onkeyup="keyUpTest();"/>
+
+    <ul id="ul">
+
+    </ul>
+
+    <script>
+        let timer = null;
+
+        function keyUpTest() {
+            const value = document.querySelector("#text_input").value;
+            if(timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(function() {
+                textAdd(value);
+            }, 500);
+        }
+
+        function textAdd(text) {
+            const ulWrap = document.getElementById("ul");
+            let liEle = document.createElement("li");
+            liEle.appendChild(document.createTextNode(text));
+            ulWrap.append(liEle);
+        }
+    </script>
+</body>
+</html>
